@@ -97,7 +97,7 @@ Se debe poder construir un objeto `Card` desde una cadena de texto. **Ejemplos**
 
 ### Módulo helpers
 
-El fichero [helpers.py](./helpers.py) contiene funciones de apoyo al desarrollo del proyecto.
+El fichero [helpers](./helpers.py) contiene funciones de apoyo al desarrollo del proyecto.
 
 La más importante es: `combinations(values, n)` que genera todas las combinaciones posibles de `values` con tamaño `n`:
 
@@ -122,5 +122,4 @@ Dos apuntes importantes:
 
 ### Comprobación
 
-- Puedes descargar aquí el [fichero de tests](test_poker.py) para pytest.
-- La calificación de la tarea estará en función del número de tests superados y de la calidad del código escrito.
+- Puedes descargar aquí el [fichero de tests](./test_poker.py) para pytest.
