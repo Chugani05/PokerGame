@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from __future__ import annotations
 
 class Dealer:
     def __init__(self, deck: List[str], player1: Player, player2: Player):
@@ -31,14 +31,11 @@ class Player:
         self.private_cards: List[str] = []
         self.common_cards: List[str] = []
 
-    def set_private_cards(self, cards: List[str]):
+    def receive_private_cards(self, cards: List[str]):
         self.private_cards = cards
 
-    def set_common_cards(self, cards: List[str]):
+    def receive_community_cards(self, cards: List[str]):
         self.common_cards = cards
 
-    def get_hand(self) -> List[str]:
-        return self.private_cards + self.common_cards
-
-    def best_hand(self) -> List[str]:
-        return sorted(self.get_hand(), reverse=True)
+    def get_best_hand(self) -> List[str]:
+        return sorted(self.private_cards + self.common_cards, reverse=True)[:5]
