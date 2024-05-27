@@ -30,9 +30,17 @@ class Dealer:
 
         if hand1 > hand2:
             return (self.player1, hand1)
-        else:
+        elif hand1 < hand2:
             return (self.player2, hand2)
-    
+        elif hand1 == hand2:
+            for h1, h2 in zip(hand1, hand2):
+                if h1 > h2:
+                    return (self.player1, hand1)
+                elif h2 > h1:
+                    return (self.player2, hand2)
+        else:
+            return (None, hand1)
+
     
     def decide_winner(self, player, community_cards):
         pass
