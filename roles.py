@@ -5,7 +5,7 @@ from cards import Card, Hand, Deck
 
 
 class Dealer:
-    def init(self, deck: list[str], player1: Player, player2: Player):
+    def __init__(self, deck: list[str], player1: Player, player2: Player):
         self.deck = deck
         self.player1 = player1
         self.player2 = player2
@@ -23,23 +23,16 @@ class Dealer:
         self.player1.recieve_priv_cards(self.deal_cards(2))
         self.player2.recieve_priv_cards(self.deal_cards(2))
 
+    
     def best_hands(self) -> tuple[str, list[str]]:
         hand1 = self.player1.best_hand()
         hand2 = self.player2.best_hand()
 
         if hand1 > hand2:
-            return (self.player1.name, hand1)
+            return (self.player1, hand1)
         else:
-            return (self.player2.name, hand2)
+            return (self.player2, hand2)
     
-    def get_best_hand(self, players, community_cards):
-        all_cards = Player.private_cards + community_cards
-        best_hand = None
-        for combo in combinations(all_cards, n=5):
-            hand = Hand(list(combo))
-            if not best_hand or hand > best_hand:
-                best_hand = hand
-        return best_hand
     
     def decide_winner(self, player, community_cards):
         pass
@@ -50,6 +43,9 @@ class Player:
         self.name = name
         self.private_cards = []
         self.common_cards = []
+
+    def __repr__(self) -> str:
+        return f'{self.name}'
     
     def recieve_priv_cards(self, cards: list[Card]):
         self.private_cards = cards
@@ -59,11 +55,15 @@ class Player:
         
     
     def best_hand(self):
-        all_cards = self.private_cards + self.common_cards
+        mixed_cards = self.common_cards + self.private_cards
         best_hand = None
-        for combo in combinations(all_cards, n=5):
-            hand = Hand(list(combo))
+        for hand1 in combinations(mixed_cards, n=5):
+            hand = Hand(list(hand1))
             if not best_hand or hand > best_hand:
                 best_hand = hand
+            elif best_hand == hand:
+                for x, y in zip(best_hand, hand):
+                    if y > x:
+                        best_hand = hand
         return best_hand
 

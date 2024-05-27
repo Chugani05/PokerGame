@@ -1,6 +1,6 @@
 import pytest
 from cards import Card, Hand
-from game import get_winner
+from game import Game
 from roles import Player
 
 TEST_CASES = [
@@ -10021,7 +10021,7 @@ def test_e2e(
     exp_win_hand_cat,
     exp_win_hand_cat_rank,
 ):
-    win_player, win_hand = get_winner(players, common_cards, private_cards)
+    win_player, win_hand = Game.get_winner(players, common_cards, private_cards)
     if exp_win_player is None:
         assert win_player is None
     else:

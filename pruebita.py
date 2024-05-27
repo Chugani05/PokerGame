@@ -205,18 +205,16 @@ class Player:
         
 
     def best_hand(self):
-        cmoon_cards = self.common_cards
+        mixed_cards = self.common_cards + self.private_cards
         best_hand = None
-        for combo in combinations(cmoon_cards, n=5):
-            mixed_cards = list(combo[:3]) + self.private_cards
-            for hand1 in combinations(mixed_cards, n=5):
-                hand = Hand(list(hand1))
-                if not best_hand or hand > best_hand:
-                    best_hand = hand
-                elif best_hand == hand:
-                    for x, y in zip(best_hand, hand):
-                        if y > x:
-                            best_hand = hand
+        for hand1 in combinations(mixed_cards, n=5):
+            hand = Hand(list(hand1))
+            if not best_hand or hand > best_hand:
+                best_hand = hand
+            elif best_hand == hand:
+                for x, y in zip(best_hand, hand):
+                    if y > x:
+                        best_hand = hand
         return best_hand
     
     

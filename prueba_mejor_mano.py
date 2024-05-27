@@ -18,4 +18,4 @@ def best_hand(common_cards, private_cards):
 if __name__ == '__main__':
 
 # [Card('3◆'), Card('3♣'), Card('A❤'), Card('K◆'), Card('Q♣')]
-    print(best_hand([Card('A❤'), Card('K◆'), Card('Q♣'), Card('9❤'), Card('3♣')], [Card('6◆'), Card('3◆')]))
+    print(best_hand([Card('10◆'), Card('9◆'), Card('8♠'), Card('6❤'), Card('5♠')], [Card('8♣'), Card('3❤')]))
