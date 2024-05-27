@@ -1,12 +1,14 @@
 from __future__ import annotations
-import roles
+from roles import Dealer, Player
+from cards import Card, Deck, Hand
 
 class Game:
 
-    def __init__(self, players, common_cards, private_cards):
+    def __init__(self, players):
         self.players = players
-        self.common_cards = common_cards
-        self.private_cards = private_cards
-
-    def get_winner( players: list[Player], common_cards: list[Card], private_cards: list[list[Card]]) -> tuple[Player | None, Hand]:
-        ...
+        self.deck = Deck()
+        self.dealer = Dealer()
+        
+    
+    def get_winner(self, players: list[Player], common_cards: list[Card], private_cards: list[list[Card]]) -> tuple[Player | None, Hand]:
+       
