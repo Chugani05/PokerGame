@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-from cards_prueba import Hand
-
 import helpers
+from prueba_cards import Hand
 
 
 class Dealer:
@@ -12,9 +11,9 @@ class Dealer:
         self.player2 = player2
 
     def reveal_community_cards(self) -> list[str]:
-        community_cards = [self.deck.pop(0) for _ in range(5)]
-        Player.receive_common_cards(community_cards)
-        return community_cards
+        common_cards = [self.deck.pop(0) for _ in range(5)]
+        Player.receive_common_cards(common_cards)
+        return common_cards
 
     def deal_private_cards(self):
         self.player1.receive_private_cards([self.deck.pop(0) for _ in range(2)])
