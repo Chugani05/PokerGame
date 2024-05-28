@@ -14,8 +14,14 @@ class Game:
         p2.recieve_cmoon_cards(common_cards)
         print(p1.best_hand())
         print(p2.best_hand())
-        winner, best_hand = dealer.best_hands()
+        result = dealer.best_hands()
+        
+        if result is None:
+            return None, p1.best_hand()
+        
+        winner, best_hand = result
         return winner, best_hand
+
         
       
 

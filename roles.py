@@ -24,7 +24,7 @@ class Dealer:
         self.player2.recieve_priv_cards(self.deal_cards(2))
 
     
-    def best_hands(self) -> tuple[str, list[str]]:
+    def best_hands(self) -> tuple[str | None, list[str]]:
         hand1 = self.player1.best_hand()
         hand2 = self.player2.best_hand()
 
@@ -36,10 +36,10 @@ class Dealer:
             for h1, h2 in zip(hand1, hand2):
                 if h1 > h2:
                     return (self.player1, hand1)
-                elif h2 > h1:
+                elif h1 < h2:
                     return (self.player2, hand2)
         else:
-            return (None, hand1)
+            return None
 
     
     def decide_winner(self, player, community_cards):
@@ -71,7 +71,10 @@ class Player:
                 best_hand = hand
             elif best_hand == hand:
                 for x, y in zip(best_hand, hand):
-                    if y > x:
+                    if x < y:
                         best_hand = hand
+                        break 
+                    elif x > y:
+                        break
         return best_hand
 

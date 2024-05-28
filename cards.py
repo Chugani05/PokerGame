@@ -86,7 +86,7 @@ class Hand:
         elif self.is_four_of_a_kind():
             return Hand.FOUR_OF_A_KIND, self.get_high_card().num
         elif self.is_full_house():
-            return Hand.FULL_HOUSE, (self.get_high_card, self[3])
+            return Hand.FULL_HOUSE, (self.get_high_card().num, self[3].num)
         elif self.is_flush():
             return Hand.FLUSH, self.get_high_card().num
         elif self.is_straight():
