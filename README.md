@@ -1,14 +1,18 @@
 # POKER GAME
 
-## Contenido
+## Contents
+- [Objective](#objective)
+- [Module Proposal](#module-proposal)
+- [Helpers Module](#helpers-module)
+- [Verification](#verification)
 
-### Objetivo
+## Objective
 
-Simular el comportamiento de una **partida de cartas de poker** modalidad **Texas Holdem** utilizando técnicas de programación orientada a objetos.
+Simulate the behavior of a **poker card game** in **Texas Holdem** mode using object-oriented programming techniques.
 
-### Propuesta de módulos
+## Module Proposal
 
-Propuesta de módulos y clases por módulo:
+Proposed modules and classes by module:
 
 ```
 ├── test_poker.py
@@ -23,9 +27,9 @@ Propuesta de módulos y clases por módulo:
     └── Player
 ```
 
-#### Game 🎲
+### Game 🎲
 
-Debe disponer de la siguiente función:
+Should have the following function:
 
 ```python
 def get_winner(
@@ -35,71 +39,71 @@ def get_winner(
 ) -> tuple[Player | None, Hand]:
 ```
 
-> 💡 Esta función debe retornar el jugador ganador y la mano ganadora. En caso de empate, el jugador será valor `None` pero la mano ganadora sí tendrá un valor.
+> 💡 This function should return the winning player and the winning hand. In the case of a tie, the player will be `None`, but the winning hand will still have a value.
 
-#### Dealer 🎩
+### Dealer 🎩
 
-| Datos     | Responsabilidades                  |
+| Data     | Responsibilities                  |
 | --------- | ---------------------------------- |
-| Mazo      | Destapar cartas comunitarias       |
-| Jugadores | Dar cartas a los jugadores         |
-|           | Pedir la mejor mano a cada jugador |
-|           | Dictaminar la mejor mano           |
+| Deck      | Reveal community cards             |
+| Players   | Deal cards to players              |
+|           | Ask each player for their best hand|
+|           | Determine the best hand           |
 
-#### Player 🙅‍♀️
+### Player 🙅‍♀️
 
-| Datos  | Responsabilidades                        |
-| ------ | ---------------------------------------- |
-| Nombre | Recibir 2 cartas privadas                |
-|        | Recibir 5 cartas comunicatorias          |
-|        | Encontrar su mejor combinación de cartas |
+| Data    | Responsibilities                          |
+| ------- | ------------------------------------------ |
+| Name    | Receive 2 private cards                   |
+|         | Receive 5 community cards                 |
+|         | Find the best combination of cards        |
 
-Se debe poder construir un objecto `Player` pasando el nombre del jugador. **Ejemplos**: `Player('Player 1'), Player('Player 2')`
+A `Player` object should be created by passing the player's name. **Examples**: `Player('Player 1'), Player('Player 2')`
 
-#### Card 🃏
+### Card 🃏
 
-| Datos              | Responsabilidades                    |
-| ------------------ | ------------------------------------ |
-| Número de la carta | Saber si una carta es menor que otra |
-| Palo de la carta   | Representar una carta                |
+| Data               | Responsibilities                      |
+| ------------------- | ------------------------------------- |
+| Card number        | Know if one card is less than another |
+| Card suit          | Represent a card                      |
 
-Se debe poder construir un objeto `Card` desde una cadena de texto. **Ejemplos**: `Card('Q♠'), Card('7♣'), Card('A♠')`
+A `Card` object should be created from a string. **Examples**: `Card('Q♠'), Card('7♣'), Card('A♠')`
 
-#### Hand 🤙
+### Hand 🤙
 
-| Datos            | Responsabilidades                   |
-| ---------------- | ----------------------------------- |
-| 5 cartas         | Descubrir la categoría de la mano   |
-| Palo de la carta | Saber si una mano es mayor que otra |
+| Data            | Responsibilities                     |
+| ---------------- | ------------------------------------- |
+| 5 cards         | Discover the category of the hand     |
+| Card suit       | Know if one hand is greater than another |
 
-- Se debe implementar el método `__contains__()` para determinar si una `Card` pertenece a una `Hand`.
-- El objeto `Hand` debe contener un atributo `cat` que identifique la categoría de la mano así como un atributo `cat_rank` que almacene el "ranking" de su categoría. En la mayoría de casos es la carta más alta, pero no siempre. **Ejemplos**:
+- The method `__contains__()` should be implemented to determine if a `Card` belongs to a `Hand`.
+- The `Hand` object should contain an attribute `cat` that identifies the category of the hand, as well as an attribute `cat_rank` that stores the "ranking" of its category. In most cases, this is the highest card, but not always. **Examples**:
 
-| `hand.cat`             | `hand.cat_rank` | Explicación                                   |
+| `hand.cat`             | `hand.cat_rank` | Explanation                                   |
 | ---------------------- | --------------- | --------------------------------------------- |
-| `Hand.HIGH_CARD`       | `'J'`           | Carta más álta                                |
-| `Hand.ONE_PAIR`        | `'5'`           | Carta más álta                                |
-| `Hand.TWO_PAIR`        | `('10', '7')`   | Tupla con cartas más altas (de mayor a menor) |
-| `Hand.THREE_OF_A_KIND` | `'K'`           | Carta más álta                                |
-| `Hand.STRAIGHT`        | `'9'`           | Carta más álta                                |
-| `Hand.FLUSH`           | `'Q'`           | Carta más álta                                |
-| `Hand.FULL_HOUSE`      | `('3', 'J')`    | Tupla con carta del trío y carta de la pareja |
-| `Hand.FOUR_OF_A_KIND`  | `'Q'`           | Carta más álta                                |
-| `Hand.STRAIGHT_FLUSH`  | `'7'`           | Carta más álta                                |
+| `Hand.HIGH_CARD`       | `'J'`           | Highest card                                 |
+| `Hand.ONE_PAIR`        | `'5'`           | Highest card                                 |
+| `Hand.TWO_PAIR`        | `('10', '7')`   | Tuple with highest cards (from highest to lowest) |
+| `Hand.THREE_OF_A_KIND` | `'K'`           | Highest card                                 |
+| `Hand.STRAIGHT`        | `'9'`           | Highest card                                 |
+| `Hand.FLUSH`           | `'Q'`           | Highest card                                 |
+| `Hand.FULL_HOUSE`      | `('3', 'J')`    | Tuple with the trio card and the pair card   |
+| `Hand.FOUR_OF_A_KIND`  | `'Q'`           | Highest card                                 |
+| `Hand.STRAIGHT_FLUSH`  | `'7'`           | Highest card                                 |
 
-#### Deck 🗃️
+### Deck 🗃️
 
-| Datos     | Responsabilidades     |
+| Data     | Responsibilities     |
 | --------- | --------------------- |
-| 52 cartas | Dar cartas aleatorias |
+| 52 cards | Deal random cards     |
 
-> 💡 OPCIONAL
+> 💡 OPTIONAL
 
-### Módulo helpers
+## Helpers Module
 
-El fichero [helpers](./helpers.py) contiene funciones de apoyo al desarrollo del proyecto.
+The [helpers](./helpers.py) file contains support functions for the project.
 
-La más importante es: `combinations(values, n)` que genera todas las combinaciones posibles de `values` con tamaño `n`:
+The most important is: `combinations(values, n)` which generates all possible combinations of `values` of size `n`:
 
 ```python
 >>> list(helpers.combinations((1, 2, 3, 4, 5), n=3))
@@ -115,11 +119,11 @@ La más importante es: `combinations(values, n)` que genera todas las combinacio
  (3, 4, 5)]
 ```
 
-Dos apuntes importantes:
+Two important notes:
 
-- Lo que le pasamos es un **iterable** con lo que se podría usar una lista de objetos `Card`.
-- El parámetro `n` debe pasarse por nombre.
+- What we pass is an **iterable**, so a list of `Card` objects could be used.
+- The parameter `n` must be passed by name.
 
-### Comprobación
+## Verification
 
-- Puedes descargar aquí el [fichero de tests](./test_poker.py) para pytest.
+- You can download the [test file](./test_poker.py) for pytest here.
