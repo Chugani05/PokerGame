@@ -1,4 +1,4 @@
-# POKER GAME
+# Poker Game
 
 ## Contents
 - [Objective](#objective)
