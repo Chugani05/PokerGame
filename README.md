@@ -1,14 +1,14 @@
 # Poker Game
 
 ## Contents
-- [Objective](#objective)
+- [Description](#description)
 - [Module Proposal](#module-proposal)
 - [Helpers Module](#helpers-module)
 - [Verification](#verification)
 
-## Objective
+## Description
 
-Simulate the behavior of a **poker card game** in **Texas Holdem** mode using object-oriented programming techniques.
+A Python Simulation of Texas Hold'em using OOP. Players compete to form the best five-card hand from private and community cards, with the dealer managing the deck and determining the winner. 
 
 ## Module Proposal
 
