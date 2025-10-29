@@ -8,7 +8,7 @@
 
 ## Description
 
-A Python Simulation of Texas Hold'em using OOP. Players compete to form the best five-card hand from private and community cards, with the dealer managing the deck and determining the winner. 
+A Python **Simulation of Texas Hold'em** using OOP. Players compete to form the best five-card hand from private and community cards, with the dealer managing the deck and determining the winner. 
 
 ## Module Proposal
 
